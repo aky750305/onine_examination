@@ -1,0 +1,1 @@
+const dashapp = angular.module('dashapp',['ngRoute']);

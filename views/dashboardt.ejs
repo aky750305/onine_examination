@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link  rel="stylesheet" type="text/css" href="../css/tdashboard.css">
+    <script src="../bower_components/angular/angular.min.js"></script>
+    <script src="../bower_components/angular-route/angular-route.min.js"></script>
+    <script src="../js/apps/tdashapp.js"></script>
+    <script src="../js/angroutes/tdashroutes.js"></script>
+</head>
+<body ng-app="tdashapp">
+        <h1><center>ONLINE EXAMINATION TEST</center></h1>
+        <h2>Welcome  <%= userName%> </h2>
+        <header>
+            <div>
+                <ul>
+                  <li><a href="#/">ALL TEST PAPER</a></li>
+                  <li><a href="#/addTest">ADD TEST</a></li>
+                  <li><a href="#/chngepss">CHANGE PASSWORD</a></li>
+                 </ul>
+            </div>
+        </header>
+    <section>
+        <ng-view></ng-view>
+    </section>
+</body>
+</html>

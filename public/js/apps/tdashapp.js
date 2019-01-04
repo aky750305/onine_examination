@@ -1,0 +1,1 @@
+const tdashapp = angular.module('tdashapp',['ngRoute']);

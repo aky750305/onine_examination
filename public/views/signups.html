@@ -1,0 +1,25 @@
+<h3><pre>       Register As Test Taker</pre> </h3>
+<form class="register" action="registers" method="POST" >
+        <table>
+            <tbody>
+                <tr>
+                    <td><label for="">Username</label></td>
+                    <td><input type="text" name="userid" placeholder="Username" ></td>
+                </tr> 
+                <tr> 
+                    <td><label for="">Password</label></td>
+                    <td><input type="password" name="password" placeholder="Strong Password"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" ></td>
+                </tr>
+                <tr>
+                    <td><label for="">Email ID</label></td>
+                    <td><input type="text" name="email" placeholder="email id"></td>
+                </tr>
+                <tr>
+                    <td><label for="">Gender</label></td>
+                    <td><input type="text" name="gender" placeholder="gender" ></td>
+                </tr>
+            </tbody>
+        </table>
+                    <br/><br/>
+                    <input type="submit" value="submit">
+        </form>

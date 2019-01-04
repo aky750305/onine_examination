@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-route/angular-route.min.js"></script>
+    <script src="dist/popupS.min.js"></script>
+    <script src="js/apps/app.js"></script>
+    <script src="js/angroutes/routes.js"></script>
+   
+</head>
+<body ng-app="myapp">
+    <header>
+        <div>
+             <h1><center>ONLINE EXAMINATION TEST</center></h1>
+                <ul>
+                    <li><a href="#/">HOME</a></li>
+                    <li><a href="#/contactus">CONTACT US</a></li>
+                    <li><a href="#/feedback">FEEDBACK</a></li>
+                </ul>
+        </div>
+         <br/>
+        <div>
+            <a href="index.html">
+            <img src="images/ap.png" class="img-fluid" alt="OET Image" width="250" height="250">
+            </a>
+        </div>   
+    </header>
+    <section>
+                <ng-view></ng-view>    
+    </section>
+    <br/><br/><hr/>
+    <footer id="tnc">
+    <a href = "#/tnc">TERMS AND CONDITIONS</a>           
+    </footer>
+</body>
+</html>
