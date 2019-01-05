@@ -10,7 +10,7 @@ var nodeMail ={
                 port:25,
                 auth:{
                     user:'aky7503051815@gmail.com',
-                    pass:'@Ky7503051815ky'
+                    pass:'********'
                 },
                 tls:{
                     rejectUnauthorized:false
