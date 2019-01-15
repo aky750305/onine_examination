@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+const multer = require('multer'); 
+const multerConf = require('../../utils/multer');
 var Paper =require("../schema/paperschema");
 var dialog = require('dialog');
 
@@ -26,16 +28,46 @@ var paperOperation = {
         if (err) {
         console.log(err);
         } 
-        else {
-        console.log("lists");
-        names.forEach(function(nameColl){
-         if((nameColl.name!= 'teachers') && (nameColl.name!= 'students'))
-         console.log(nameColl.name)
+        else 
+        {
+         i=0;
+         var all = new Array();
+         names.forEach(function(nameColl){
+        // if((nameColl.name!= 'teachers') && (nameColl.name!= 'students'))
+         if(nameColl.name!= 'usersts')
+         all[i]=nameColl.name;
+        // console.log(nameColl.name)
+         i++;
          })
-        }        
+        }
+         var all = all.filter(function (el) {
+         return el != null;
+        }); 
+        //console.log(all);   
+        var my = JSON.stringify(all); 
+        //console.log(my) 
+        response.render("papers",{papers:my});
       mongoose.connection.close();
       });
-      });
-    }
+    
+      }); 
+     },
+     uploadTest(request,response){
+      var upload = multer(multerConf).single('photo');
+      upload(request, response, function (err) {
+        if (err instanceof multer.MulterError) {
+          response.send("yess")
+        } else if (err) {
+         response.send("noooo")
+         console.log(err)
+        }
+        else{
+          response.send("fine"); 
+        }  
+      })
+     },
+     addTest(json,request,response){
+      
+     }
 }
 module.exports = paperOperation;

@@ -11,7 +11,7 @@ var exceltojson = {
     if(err) {
       console.error(err);
     } else {
-      console.log("dd",result);
+      console.log("dd");
      return result;
     }
   })

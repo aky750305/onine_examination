@@ -1,4 +1,4 @@
-<h3><pre>       Register As Test Taker</pre> </h3>
+<h3><pre>       Register As Test Taker Or Teacher</pre> </h3>
 <form class="register" action="registers" method="POST" >
         <table>
             <tbody>
@@ -16,7 +16,21 @@
                 </tr>
                 <tr>
                     <td><label for="">Gender</label></td>
-                    <td><input type="text" name="gender" placeholder="gender" ></td>
+                    <td>
+                    <select name="gender">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="">Profession</label></td>
+                    <td>
+                    <select name="profession">
+                    <option value="Teacher">Teacher</option>
+                    <option value="Student">Student</option>
+                    </select>
+                    </td>
                 </tr>
             </tbody>
         </table>

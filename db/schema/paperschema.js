@@ -8,5 +8,5 @@ var UserSchema = new Schema({
     'option4':{type:String, required:true},
     'answer':{type:String, required:true}
 })
-var UserModels = mongoose.model("paper2",UserSchema);
+var UserModels = mongoose.model("paper3",UserSchema);
 module.exports = UserModels;

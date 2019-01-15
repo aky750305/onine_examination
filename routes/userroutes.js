@@ -1,14 +1,14 @@
 const express = require("express");
-const fs = require("fs");
+var chokidar = require('chokidar');
 const userOperation = require("../db/operations/useroperation");
 const paperOperation = require("../db/operations/paperoperation");
 const nodeMail = require('../utils/nodemailer');
+const exceltojson = require('../utils/exceltojson');
 const userRoute = express.Router();
 
 userRoute.post('/',(request,response)=>{
     response.sendFile("./public/index.html");
 });
-
 
 userRoute.post('/logins',(request,response)=>{
     email = request.body.email;
@@ -20,24 +20,13 @@ userRoute.post('/logins',(request,response)=>{
 userOperation.fetchUser(userObject,request,response);
 });
 
-userRoute.post('/registert',(request,response)=>{
-    var userObject ={
-        'userid' : request.body.userid,
-        'password' : request.body.password,
-        'email' : request.body.email,
-        'gender' : request.body.gender,
-        'professional' :'teachers'
-    }
-    userOperation.addUsert(userObject,request,response);
-});
-
 userRoute.post('/registers',(request,response)=>{
     var userObject ={
         'userid' : request.body.userid,
         'password' : request.body.password,
         'email' : request.body.email,
         'gender' : request.body.gender,
-        'professional' :'students'
+        'profession' :request.body.profession
     }
     userOperation.addUsers(userObject,request,response);
 });
@@ -69,31 +58,23 @@ userRoute.post('/chngepss',(request,response)=>{
     else{
         response.send("New Password and Conform Password is not same...");
     }
-})
+});
 
-userRoute.post('/addTest',(request,response)=>{
-    var adTest = request.body.adtest;   
-    exceltojson.excel(adTest,response);
-    let result = fs.readFileSync('./output.json');
-    let output = JSON.parse(result);
-    console.log(result);
-    output.forEach(function(value){
-        var questions ={
-          question:value.question,
-          opt1:value.opt1,
-          opt2:value.opt2,
-          opt3:value.opt3,
-          opt4:value.opt4,
-          ans:value.ans,
-        }
-        pprOperation.addPpr(questions,request,response);
-        console.log(questions);
-      });
-    });
-    userRoute.post('/alltest',(request,response)=>{
-        console.log("pass userroute");
-        paperOperation.fetchPprs(request,response);
-    });
+userRoute.post('/upload',(request, response)=> {
+    paperOperation.uploadTest(request,response);
+    var watcher = chokidar.watch('routes/uploads', {ignored: /^\./, persistent: true});
+    watcher
+    .on('add', function(path) {console.log('File fsafsa', path, 'has been added');
+    exceltojson.excel(path,response);
+  })
+    .on('error', function(error) {console.error('Error happened', error);})
+    console.log(JSON.stringify(output.json));
+});
+    
+userRoute.post('/alltest',(request,response)=>{
+    console.log("pass userroute");
+    paperOperation.fetchPprs(request,response);
+});
 
 
 module.exports = userRoute;
