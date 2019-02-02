@@ -64,13 +64,12 @@ userRoute.post('/upload',(request, response)=> {
     paperOperation.uploadTest(request,response);
     var watcher = chokidar.watch('routes/uploads', {ignored: /^\./, persistent: true});
     watcher
-    .on('add', function(path) {console.log('File fsafsa', path, 'has been added');
+    .on('add', function(path) {console.log('File fsasa', path, 'has been added');
     exceltojson.excel(path,response);
   })
     .on('error', function(error) {console.error('Error happened', error);})
-    console.log(JSON.stringify(output.json));
 });
-    
+  
 userRoute.post('/alltest',(request,response)=>{
     console.log("pass userroute");
     paperOperation.fetchPprs(request,response);
